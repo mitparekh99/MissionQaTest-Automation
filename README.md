@@ -44,11 +44,11 @@ The following folder `src/main/java/AutomationTest/mission` contains the followi
     - Result will be captured in `test-output` folder
 
 ---------------------------------------------------------------------------------------------
-Mission QA Automation Framework
+**Mission QA Automation Framework**
 
 This repository contains a test automation framework developed for the Mission Under QA assignment. The framework supports UI and API testing using Cucumber BDD, Selenium WebDriver, RestAssured, and TestNG with Maven.
 
-Technology Stack
+**Technology Stack**
 
 Java
 Maven
@@ -58,7 +58,7 @@ TestNG
 RestAssured (API testing)
 SLF4J (logging)
 
-Framework Highlights
+**Framework Highlights**
 
 Page Object Model (POM) for UI automation
 Separate layers for UI tests and API tests
@@ -69,7 +69,8 @@ Tag-based test execution (@ui, @api) [In rennuer currently deified  tags = "@api
 Cucumber HTML report generation
 Logging added for better execution traceability
 
-Project Structure
+**Project Structure**
+
 src
  ├── main/java/mission
  │     ├── api
@@ -90,20 +91,24 @@ src
        │     └── UI-Test.feature
        └── TestData.properties
 
-Running Tests
+**Running Tests**
 Run all tests:
+
     mvn clean test
 
 Run only API tests:
+
     mvn clean test -Dcucumber.filter.tags="@api"
 
 Run only UI tests:
+
     mvn clean test -Dcucumber.filter.tags="@ui"
 
-Test Coverage
-API Tests
+**Test Coverage**
+**API Tests**
 
 Tests implemented using ReqRes API:
+
 Get users list
 Get single user
 Handle user not found
@@ -111,7 +116,8 @@ Create user
 Login success / failure
 Delayed response validation
 
-UI Tests
+**UI Tests**
+
 Tests implemented using SauceDemo:
 
 Login
@@ -121,12 +127,12 @@ Remove item from cart
 Complete checkout
 Validate item total and tax
 
+**Reports**
 
-Reports
 Execution reports are generated in:
 
     target/cucumber-report.html
 
-Notes
+**Notes**
 
 The framework is designed with maintainability and scalability in mind, following common automation practices such as Page Object Model, reusable API clients, configuration management, and tag-based execution.
