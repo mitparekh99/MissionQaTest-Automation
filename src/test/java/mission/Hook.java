@@ -4,16 +4,12 @@ import io.cucumber.java.Before;
 import io.cucumber.java.After;
 import io.cucumber.java.Scenario;
 
-import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.*;
-
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.Duration;
 import java.util.Date;
-
 import javax.imageio.ImageIO;
 
 import ru.yandex.qatools.ashot.AShot;
