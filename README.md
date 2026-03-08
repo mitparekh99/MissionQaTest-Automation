@@ -98,11 +98,11 @@ Run all tests:
 
 Run only API tests:
 
-    mvn clean test -Dcucumber.filter.tags="@api"
+    mvn clean test "-Dcucumber.filter.tags=@api"
 
 Run only UI tests:
 
-    mvn clean test -Dcucumber.filter.tags="@ui"
+    mvn clean test "-Dcucumber.filter.tags=@ui"
 
 **Test Coverage**
 **API Tests**
