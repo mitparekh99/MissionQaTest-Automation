@@ -19,11 +19,9 @@ public class BrowserSetup extends BasePage {
     private static final String FIREFOX_WIN = "src\\test\\java\\BrowserDirectory\\geckodriver.exe";
     private static final String CHROME_MAC = "src/test/java/BrowserDirectory/chromedriver-Mac";
 
-
     /**
      * Browser property location /src/test/java/TestData/TestData.properties
      */
-
 
     /**
      * Function for multi browser
@@ -34,19 +32,7 @@ public class BrowserSetup extends BasePage {
         if (browser.equalsIgnoreCase("chrome")) {
 
             WebDriverManager.chromedriver().setup();
-
             ChromeOptions options = new ChromeOptions();
-
-            options.addArguments("--disable-notifications");
-            options.addArguments("--disable-infobars");
-            options.addArguments("--disable-save-password-bubble");
-            options.addArguments("--disable-features=PasswordLeakDetection");
-
-            Map<String, Object> prefs = new HashMap<>();
-            prefs.put("credentials_enable_service", false);
-            prefs.put("profile.password_manager_enabled", false);
-
-            options.setExperimentalOption("prefs", prefs);
 
             // IMPORTANT → run with clean temporary profile
             options.addArguments("--user-data-dir=" + System.getProperty("java.io.tmpdir") + "/chrome-test-profile");
@@ -67,9 +53,10 @@ public class BrowserSetup extends BasePage {
             driver = new ChromeDriver();
         } else if (browser.equalsIgnoreCase("chromeHeadless")) {
             //System.setProperty("webdriver.chrome.driver", CHROME_MAC);
-            ChromeOptions chromeOptions = new ChromeOptions();
-            chromeOptions.addArguments("--headless");
             WebDriverManager.chromedriver().setup();
+            ChromeOptions chromeOptions = new ChromeOptions();
+            options.addArguments("--user-data-dir=" + System.getProperty("java.io.tmpdir") + "/chrome-test-profile");
+            chromeOptions.addArguments("--headless");
             driver = new ChromeDriver(chromeOptions);
         } else if (browser.equalsIgnoreCase("api")) {
 
