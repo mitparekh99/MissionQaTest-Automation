@@ -8,6 +8,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 
 import java.text.MessageFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BrowserSetup extends BasePage {
 
@@ -29,10 +31,28 @@ public class BrowserSetup extends BasePage {
     public void selectBrowser() {
         browser = LoadProp.getProperty("Browser");
 
-        if (browser.equalsIgnoreCase("Chrome")) {
-            //System.setProperty("webdriver.chrome.driver", CHROME_WIN);
+        if (browser.equalsIgnoreCase("chrome")) {
+
             WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver();
+
+            ChromeOptions options = new ChromeOptions();
+
+            options.addArguments("--disable-notifications");
+            options.addArguments("--disable-infobars");
+            options.addArguments("--disable-save-password-bubble");
+            options.addArguments("--disable-features=PasswordLeakDetection");
+
+            Map<String, Object> prefs = new HashMap<>();
+            prefs.put("credentials_enable_service", false);
+            prefs.put("profile.password_manager_enabled", false);
+
+            options.setExperimentalOption("prefs", prefs);
+
+            // IMPORTANT → run with clean temporary profile
+            options.addArguments("--user-data-dir=" + System.getProperty("java.io.tmpdir") + "/chrome-test-profile");
+
+            driver = new ChromeDriver(options);
+
         } else if (browser.equalsIgnoreCase("edge")) {
             //System.setProperty("webdriver.edge.driver", EDGE);
             WebDriverManager.edgedriver().setup();

@@ -1,0 +1,25 @@
+# Maven
+target/
+
+# TestNG
+test-output/
+
+# Cucumber reports
+reports/
+*.json
+*.html
+
+# Logs
+*.log
+
+# Screenshots
+Screenshots/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.iml

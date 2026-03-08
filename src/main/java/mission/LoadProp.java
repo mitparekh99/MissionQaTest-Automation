@@ -1,24 +1,19 @@
 package mission;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class LoadProp extends BasePage {
 
-    static Properties prop;
-    static FileInputStream input;
-    public static String testData = "/src/test/java/TestData/TestData.properties";
-
-    private static File currentDirectory = new File(new File("").getAbsolutePath());
-
+    static Properties prop = new Properties();
+    static InputStream input;
+    public static String testData = "src/test/TestData/TestData.properties";
 
     public static String getProperty(String key) {
-        prop = new Properties();
-
+       
         try {
-            input = new FileInputStream(currentDirectory + testData);
+            input = LoadProp.class.getClassLoader().getResourceAsStream("TestData.properties");
             prop.load(input);
             input.close();
         } catch (IOException e) {
