@@ -33,10 +33,7 @@ public class BrowserSetup extends BasePage {
 
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
-
-            // IMPORTANT → run with clean temporary profile
             options.addArguments("--user-data-dir=" + System.getProperty("java.io.tmpdir") + "/chrome-test-profile");
-
             driver = new ChromeDriver(options);
 
         } else if (browser.equalsIgnoreCase("edge")) {
@@ -52,11 +49,13 @@ public class BrowserSetup extends BasePage {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
         } else if (browser.equalsIgnoreCase("chromeHeadless")) {
-            //System.setProperty("webdriver.chrome.driver", CHROME_MAC);
+
             WebDriverManager.chromedriver().setup();
             ChromeOptions chromeOptions = new ChromeOptions();
-            options.addArguments("--user-data-dir=" + System.getProperty("java.io.tmpdir") + "/chrome-test-profile");
+        
+            chromeOptions.addArguments("--user-data-dir=" + System.getProperty("java.io.tmpdir") + "/chrome-test-profile");
             chromeOptions.addArguments("--headless");
+        
             driver = new ChromeDriver(chromeOptions);
         } else if (browser.equalsIgnoreCase("api")) {
 
